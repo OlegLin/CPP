@@ -100,38 +100,7 @@ int main(){
 
     }
 
-    std::string s = "Some string";
 
-    // приписывание символов и строк
-    s += ' ';  // добавляем отдельный символ в конец, это аналог push_back
-    s += "functions";  // добавляем строку в конец
-    std::cout << s << "\n";  // Some string functions
-
-    // выделение подстроки
-    // подстрока "string" из 6 символов начиная с 5-й позиции
-    std::string sub1 = s.substr(5, 6);
-    // подстрока "functions" с 12-й позиции и до конца
-    std::string sub2 = s.substr(12);
-
-    // поиск символа или подстроки
-    size_t pos1 = s.find(' ');  // позиция первого пробела, в данном случае 4
-    size_t pos2 = s.find(' ', pos1 + 1);  // позиция следующего пробела (11)
-    size_t pos3 = s.find("str");  // вернётся 5
-    size_t pos4 = s.find("#");  // вернётся std::string::npos
-
-
-        std::string s = "Some string functions";
-
-    // вставка подстроки
-    s.insert(5, "std::");
-    std::cout << s << "\n";  // Some std::string functions
-
-    // замена указанного диапазона на новую подстроку
-    s.replace(0, 4, "Special");
-    std::cout << s << "\n";  // Special std::string functions
-
-    // удаление подстроки
-    s.erase(8, 5);  // Special string functions
 
 
 }
