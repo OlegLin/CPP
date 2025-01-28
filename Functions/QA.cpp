@@ -43,7 +43,7 @@ void f(const std::vector<int>& v){
 //conc
 std::string Concatenate(const std::vector<std::string>& newword){
     std::string concate;
-    for (std::string word : newword){
+    for (const auto& word : newword){
 
         concate += word;
 
