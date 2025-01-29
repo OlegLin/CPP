@@ -27,7 +27,7 @@ bool operator < (const Date& lhs, const Date& rhs){
 
 
 // Sorted  ON DAY
-bool CompareWithoutYearMounth(const Date& lhs, const Date& rhs){
+bool CompareWithoutYearMonth(const Date& lhs, const Date& rhs){
     return lhs.day < rhs.day;
 }
 
@@ -48,9 +48,16 @@ cout << "******************************\n";
         cout << date.day <<'/' << date.month << '/' << date.year << '\n';
     }
     cout << "*********************\n";
-    std::sort(dates.begin(), dates.end(), CompareWithoutYearMounth);
+    std::sort(dates.begin(), dates.end(), CompareWithoutYearMonth);
     for (const auto& date : dates){
         cout << date.day <<'/' << date.month << '/' << date.year << '\n';
     }
+
+
+    // std::vector<Date> dates;
+    std::sort(dates.begin(), dates.end(), [](const Date& lhs, const Date& rhs) {
+        return std::tie(lhs.month, lhs.day) < std::tie(rhs.month, rhs.day);
+    });
+
 
 }
