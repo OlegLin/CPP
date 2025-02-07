@@ -8,14 +8,12 @@
 
 template <typename T>
 void Print(const T& neww, std::string delimeter){
-
-    for (const auto& elem : neww){
-        std::cout << elem ;
-        if (elem != neww[neww.size() - 1]){
-            std::cout << delimeter;
-        }
+    if (!neww.empty()){
+    std::cout << *neww.begin();
+    for (auto iter = std::next(neww.begin()); iter != neww.end(); ++iter){
+        std::cout << delimeter << *iter; 
     }
-    std::cout<<'\n';
+    std::cout<<'\n';}
     
 }
 
@@ -23,6 +21,9 @@ void Print(const T& neww, std::string delimeter){
 int main(){
     std::vector<std::string> datatext = {"asdas", "asda", "asdad"};
     std::vector<int> data = {1, 2, 3, 4};
+    std::vector<int> datae = {};
+
     Print(data, ", ");
+    Print(datae, ", ");
     Print(datatext, " ");
 }
