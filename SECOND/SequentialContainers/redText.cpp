@@ -2,52 +2,40 @@
 #include <list>
 #include <string>
 
-std::list<std::string> AddText(){
-    std::string action;
-    std::list<std::string> text;
-    while (std::getline(std::cin, action)){
-        if(action != ""){
-            text.push_back(action);
-        }
-        else { text.push_back(action);
-                break; }
-                
-    }
-    return text;
-
-}
-
-
-
-
-
 
 int main(){
-    std::list<std::string> TEXT = AddText();
-    auto iter = TEXT.begin();
-    std::string command, buffer;
-
+    std::list<std::string> text;
+    std::string line, buffer;
     
+    while (std::getline(std::cin, line)){
+        if (line == ""){break;}
+        text.push_back(line);
+    }
 
-    while (std::getline(std::cin, command)){
-        if (command == "Down" and iter != TEXT.end()){
-            ++iter;
-        } else if (command == "Up" and iter != TEXT.begin()){
-            --iter;
-        } else if (command == "Ctrl+X"){
-            buffer = *iter;
-            iter = TEXT.erase(iter);
-        } else if (command == "Ctrl+V"){
-                TEXT.insert(iter, buffer);
+    auto cursor = text.begin();
+
+    while (std::getline(std::cin, line)){
+        if (line == "Up" and cursor != text.begin()){
+            cursor--;
+            std::cout << "UUUUUUUUUUUUUUUUU'\n";
+                       
+        } else if (line == "Down" and cursor != text.end()){
+            cursor++;
+            // std::cout << "DDDDDDDDDDDDDDDDDDDDDD'\n";
+                   
+        } else if (line == "Ctrl+X" and *cursor != ""){
+            buffer = *cursor;
+            cursor = text.erase(cursor);
+            // std::cout << "XXXXXXXXXXXXXXXXXXXXXX'\n";            
+        } else if (line == "Ctrl+V" and buffer != ""){
+            // std::cout << "IIIIIIIIIIIIIIIIIIII'\n";
+            text.insert(cursor, buffer);
         }
 
-    }
 
-    for (std::string elem : TEXT){
-        std::cout << elem << '\n';
     }
+    for (std::string line : text){
+        std::cout << line << '\n';
+}
 
-    
-    
-    
 }
