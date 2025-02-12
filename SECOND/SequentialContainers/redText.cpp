@@ -8,26 +8,35 @@ int main(){
     std::string line, buffer;
     
     while (std::getline(std::cin, line)){
-        if (line == ""){break;}
+        if (line == ""){//text.push_back(line);
+            break;}
         text.push_back(line);
     }
 
     auto cursor = text.begin();
 
     while (std::getline(std::cin, line)){
-        if (line == "Up" and cursor != text.begin()){
+        while (line == "Up" || line == "Down")
+        {
+            
+        
+        
+        if (line == "Up" && cursor != text.begin()){
             cursor--;
-            std::cout << "UUUUUUUUUUUUUUUUU'\n";
+            // std::cout << "UUUUUUUUUUUUUUUUU'\n";
                        
-        } else if (line == "Down" and cursor != text.end()){
+        } else if (line == "Down" && cursor != text.end()){
             cursor++;
             // std::cout << "DDDDDDDDDDDDDDDDDDDDDD'\n";
                    
-        } else if (line == "Ctrl+X" and *cursor != ""){
+        } } 
+        
+        
+        if (line == "Ctrl+X" && cursor != text.end()){
             buffer = *cursor;
             cursor = text.erase(cursor);
             // std::cout << "XXXXXXXXXXXXXXXXXXXXXX'\n";            
-        } else if (line == "Ctrl+V" and buffer != ""){
+        } else if (line == "Ctrl+V" && buffer != ""){
             // std::cout << "IIIIIIIIIIIIIIIIIIII'\n";
             text.insert(cursor, buffer);
         }
@@ -35,7 +44,7 @@ int main(){
 
     }
     for (std::string line : text){
-        std::cout << line << '\n';
+        std::cout << line << '\n' ;
 }
-
+   
 }
