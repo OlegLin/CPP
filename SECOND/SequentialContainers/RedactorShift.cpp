@@ -26,6 +26,8 @@ auto Down(const std::list<std::string>& text, auto nextkursor){
     return nextkursor;
 }
 
+
+
 std::vector<std::string> Buffer(std::list<std::string> text, auto kursor, int n = 1){
     std::vector<std::string> buf;
     for (std::size_t i = 0; i != n; ++i){
@@ -43,6 +45,10 @@ int main(){
     std::string command;
     auto kursor = text.begin();
     while (std::getline(std::cin, command)){
+
+        if (command == "Shift"){
+            Buffer(text, kursor);
+        }
         if (command == "Up"){
             kursor = Up(text, kursor);
             std::cout << *kursor;
