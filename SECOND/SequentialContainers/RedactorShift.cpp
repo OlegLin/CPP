@@ -17,11 +17,16 @@ std::list<std::string> NewText(){
     return newtext;
 }
 
+<<<<<<< HEAD
 auto Up(const std::list<std::string>& text, std::list<std::string>::iterator lastkursor){
+=======
+auto Up(const std::list<std::string>& text, auto lastkursor){
+>>>>>>> 32971688c6086b291d17ecf6401bdfcd9831f760
     if (lastkursor != text.begin()){ lastkursor--;}
     return lastkursor;
 }
 
+<<<<<<< HEAD
 auto Down(const std::list<std::string>& text, std::list<std::string>::iterator nextkursor){
     if (nextkursor != text.end()){ nextkursor++;}
     return nextkursor;
@@ -42,8 +47,24 @@ std::deque<std::string> BufferUp(std::deque<std::string> buffer, std::string kur
 }
 
 
+=======
+auto Down(const std::list<std::string>& text, auto nextkursor){
+    if (nextkursor != text.end()){ nextkursor++;}
+    return nextkursor;
+}
+>>>>>>> 32971688c6086b291d17ecf6401bdfcd9831f760
 
 
+
+std::vector<std::string> Buffer(std::list<std::string> text, auto kursor, int n = 1){
+    std::vector<std::string> buf;
+    for (std::size_t i = 0; i != n; ++i){
+        buf.push_back(*kursor);
+        kursor++;
+    }
+    return buf;
+
+}
 
 
 
@@ -53,6 +74,7 @@ int main(){
     std::string command;
     int n = 1;
     auto kursor = text.begin();
+<<<<<<< HEAD
     
     while (std::getline(std::cin, command) ){
         
@@ -83,9 +105,27 @@ int main(){
 
         }
 
+=======
+    while (std::getline(std::cin, command)){
+
+        if (command == "Shift"){
+            Buffer(text, kursor);
+        }
+        if (command == "Up"){
+            kursor = Up(text, kursor);
+            std::cout << *kursor;
+        } else if (command == "Down"){
+            kursor = Down(text, kursor);
+            std::cout << *kursor;
+        } else if (command == "Ctrl+X"){
+
+        
+    }
+>>>>>>> 32971688c6086b291d17ecf6401bdfcd9831f760
     }
     
     for (std::string elem : text){
         std::cout << elem << '\n';
     }
+
 }
