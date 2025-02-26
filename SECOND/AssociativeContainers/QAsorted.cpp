@@ -12,6 +12,13 @@ int main() {
         ++freqs[word];
     }
 
+
+
+    char ch = 'q';
+    std::vector<std::string> sym(ch);
+    for (std::string i : sym){
+        std::cout << i << '\n';
+    }
     // копируем пары в вектор, используя шаблонный конструктор от двух итераторов:
     std::vector<std::pair<std::string, int>> sortedByFreq(
         freqs.begin(),
