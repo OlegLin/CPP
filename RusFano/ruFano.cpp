@@ -2,6 +2,7 @@
 #include <list>
 #include <map>
 #include <fstream>
+#include <locale.h>
 
 std::string noSplit(){
     std::string all_elem;
@@ -16,7 +17,7 @@ std::string noSplit(){
 
 
 int main(){
-    setlocale(LC_ALL, "ru-ru.UTF-8");
+    setlocale(LC_ALL, "ru");
 
     std::string text = noSplit(), shifr;
     
