@@ -2,12 +2,7 @@
 #include <list>
 #include <map>
 #include <fstream>
-<<<<<<< HEAD
-#include <clocale>
 
-=======
-#include <locale.h>
->>>>>>> bf42afb1944d94b3f9e0dc2af73167d32acb3f1b
 
 std::string noSplit(){
     
