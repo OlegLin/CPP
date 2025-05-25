@@ -29,7 +29,7 @@ int main(){
     for (const auto& [word, pages] : SortbyMap){
         std::cout << word << ": " << pages << '\n';
     }
-    
+    answerpages = ;
 
 
     for (const auto& [word, pages] : SortbyMap){
