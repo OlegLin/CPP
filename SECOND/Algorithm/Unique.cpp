@@ -3,20 +3,37 @@
 
 template <typename Iter>
 Iter Unique(Iter first, Iter last){
-    std::cout<<"QWERT"<<'\t';
+    auto lastfirst = first;
+    
     ++first;
     while (first != last){
-        auto lastiter = --first;
-        if (*first == *lastiter){
-            std::cout << *first << '\t';
+        
+        if (*lastfirst == *first){
+            
+            ++first;
+        } else{
+            
+            ++lastfirst;
+            *lastfirst = *first;
+            
         }
-        ++first;
     }
-    return last;
+    ++lastfirst;
+    return lastfirst;
 }
 
 
 int main(){
-    std::vector<int> v = {1,2,2,2,3,3,4,5,6,5,5};
-    Unique(v.begin(), v.end());
+    std::vector<int> v = {};
+    for (auto elem : v){
+        std::cout<< elem << '\t' << "asda";
+    }
+    std::cout << '\n' ;
+    auto iter = Unique(v.begin(), v.end());
+    
+    for (auto elem : v){
+        std::cout<< elem << '\t';
+    }
+    std::cout << '\n';
+    std::cout << *iter << '\n';
 }
