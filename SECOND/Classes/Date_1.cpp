@@ -9,7 +9,7 @@ private:
     bool flag = month == 2 || month == 4 || month == 6 || month == 9 || month == 11; 
     bool leapyear = ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) && year > 1969 && year < 2100;
     void Norm(){
-        
+        int numbersDay = 0;
         
         if (month == 2 && leapyear){
             if (day < 1 || day > 29){
@@ -56,14 +56,14 @@ public:
 
     };
 
-    int TotalDay() const{
-        for (size_t i = 0; i != month; ++i){
-            if (i == 2 && leapyear){
-                day += 28;
-            }
-        } else if (i == 2 && !leapyear){
-            day += 29
+    int TotalDay() {
+        int i = month;
+        while (i != 0){
+            --i;
+            day += 30;
+            
         }
+        return day;
     }
 
     int GetDay(){
@@ -76,9 +76,9 @@ public:
         return year;
     }
 
-    Date operator + (int d) {
+    // Date operator + (int d) {
 
-    }
+    // }
 };
 
 
@@ -87,4 +87,5 @@ int main() {
     std::cout<< data1.GetDay() << '.' << data1.GetMonth() << '.' << data1.GetYear() << '\n';
     Date data2(3, 3, 2000);
     std::cout<< data2.GetDay() << '.' << data2.GetMonth() << '.' << data2.GetYear() << '\n';
+    std::cout << data2.TotalDay() << '\n';
 }
