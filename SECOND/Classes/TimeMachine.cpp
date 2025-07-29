@@ -50,10 +50,11 @@ public:
         return hours * 3600 + minute * 60 + seconds;
     }
 
-    int operator - (const Time& t1, const Time& t2) {
-        return t1.TotalSeconds() ;
-    }
+
 };
+    int operator - (const Time& t1, const Time& t2) {
+        return t1.TotalSeconds() - t2.TotalSeconds();
+    }
 
 
 int main(){
@@ -69,6 +70,8 @@ int main(){
     std::cout<< t3.GetHours() << ':' << t3.GetMinute() << ':' << t3.GetSeconds() << '\n';
     std::cout << t1.TotalSeconds() << '\n';
 
-    
+    std::cout<< "NOt sub time: 7-5=" << 7-5<<'\n';
+    t3 = Time(t1-t2);
+    std::cout<< t3.GetHours() << ':' << t3.GetMinute() << ':' << t3.GetSeconds() << '\n';
     std::cout<< "SUB:  " <<  t1-t2 << '\n';
 }
