@@ -11,7 +11,7 @@ private:
         int d = day;
         int m = 1;
         bool leapyear = (y % 4 == 0 && y % 100 != 0) || y % 400 == 0;
-        while (day > 365){
+        while ((day > 365 && !leapyear) || (day > 366 && leapyear) ){
             leapyear = (y % 4 == 0 && y % 100 != 0) || y % 400 == 0;
             if (leapyear){
                 day -= 366;
@@ -19,9 +19,9 @@ private:
             } else {day -= 365;
             ++y;}
         }
-        while ((day > 31 && !shortMonth) || (day > 30 && shortMonth) || (day > 28 && m == 2 && leapyear) || (day > 29 && m == 2 && !leapyear)){
+        while ((day >=32 && !shortMonth) || (day >= 31 && shortMonth) || (day >= 30 && m == 2 && leapyear) || (day >= 29 && m == 2 && !leapyear)){
             
-            if (shortMonth){
+            if ( month == 4 || month == 6 || month == 9 || month == 11){
                 day -= 30;
                 ++m;
             } else if (m == 2 && leapyear){
@@ -105,12 +105,17 @@ public:
 
 int main() {
     Date data1(32, 3, 2000);
-    std::cout<< data1.GetDay() << '.' << data1.GetMonth() << '.' << data1.GetYear() << '\n';
+    std::cout<< "DATA1: "<<data1.GetDay() << '.' << data1.GetMonth() << '.' << data1.GetYear() << '\n';
     Date data2(1, 1, 1973);
-    std::cout<< data2.GetDay() << '.' << data2.GetMonth() << '.' << data2.GetYear() << '\n';
+    std::cout<<"DATA2: "<< data2.GetDay() << '.' << data2.GetMonth() << '.' << data2.GetYear() << '\n';
     std::cout << data2.TotalDay()<<'\n';
-    Date data3(1097);
-    std::cout<< data3.GetDay() << '.' << data3.GetMonth() << '.' << data3.GetYear() << '\n';
-    Date data4 = data2 - 2;
-    std::cout<< data4.GetDay() << '.' << data4.GetMonth() << '.' << data4.GetYear() << '\n';
+    Date data3(1095);
+    std::cout<<"DATA3: "<< data3.GetDay() << '.' << data3.GetMonth() << '.' << data3.GetYear() << '\n';
+    Date data4 = data2 + 2;
+    std::cout<< "DATA4: "<<data4.GetDay() << '.' << data4.GetMonth() << '.' << data4.GetYear() << '\n';
+    for (int i = 1; i != 367    ; ++i){
+        Date data6(i);
+    std::cout<<"DATA6: "<< i << "  :  " << data6.GetDay() << '.' << data6.GetMonth() << '.' << data6.GetYear() << '\n';
+
+    }
 }
