@@ -5,10 +5,9 @@ class Date
 {
 private:
     int day = 1, month = 1, year = 1970;
-    bool shortMonth = month == 2 || month == 4 || month == 6 || month == 9 || month == 11;
     void InDate(){
         int y = 1970;
-        int d = day;
+        
         int m = 1;
         bool leapyear = (y % 4 == 0 && y % 100 != 0) || y % 400 == 0;
         while ((day >= 366 && !leapyear) || (day >= 367 && leapyear) ){
@@ -58,7 +57,7 @@ public:
     Date(int d):
     day(d){InDate();};
 
-    int TotalDay(){
+    int TotalDay() const{
         
         int y = year;
         int m = month;
@@ -70,7 +69,7 @@ public:
                 d += 29;
             } else if (m == 2 && !leapyear){
                 d += 28;
-            } else if (shortMonth) {
+            } else if (m == 4 || m == 6 || m == 9 || m == 11) {
                 d += 30;
             } else { d += 31; }
             --m;
@@ -94,17 +93,20 @@ public:
     return Date(Date(day, month, year).TotalDay() - d);
 }
 
-    int GetDay(){
+    int GetDay() const{
         return day;
     }
-    int GetMonth(){
+    int GetMonth() const{
         return month;
     }
-    int GetYear(){
+    int GetYear() const{
         return year;
     }
 
 };  
+    int operator - (const Date& d1, const Date& d2){
+        return d1.TotalDay() - d2.TotalDay();
+    }
 
 
 
@@ -119,6 +121,10 @@ int main() {
     std::cout<<"DATA3: "<< data3.GetDay() << '.' << data3.GetMonth() << '.' << data3.GetYear() << '\n';
     Date data4 = data3 + 10;
     std::cout<< "DATA4: "<<data4.GetDay() << '.' << data4.GetMonth() << '.' << data4.GetYear() << '\n';
+    Date data5 = data3 - 10;
+    std::cout<< "DATA5: "<<data5.GetDay() << '.' << data5.GetMonth() << '.' << data5.GetYear() << '\n';  
+    int razn = data5 - data4;
+    std::cout << razn << '\n';
     // for (int i = 1; i != 1463  ; ++i){
     //     Date data6(i);
     // std::cout<<"DATA6: day "<< i << '\t' << data6.GetDay() << '.' << data6.GetMonth() << '.' << data6.GetYear() << '\n';
